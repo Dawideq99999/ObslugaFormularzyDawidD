@@ -1,0 +1,63 @@
+﻿@model ObsługaFormularzyDawidD.Models.Data
+
+@{
+    ViewData["Title"] = "Form";
+}
+
+<h1>Form</h1>
+
+<h4>Data</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Form" method="post">
+            <div>
+                <label asp-for="Name"> Your name</label>
+                <input asp-for="Name" />
+            </div>
+            <div>
+                <label asp-for="Surname"> Your surname</label>
+                <input asp-for="Surname" />
+            </div>
+            <div>
+                <label asp-for="Email"> Your e-mail</label>
+                <input asp-for="Email" />
+            </div>
+            <div>
+                <label asp-for="Password"> Password</label>
+                <input asp-for="Password" />
+            </div>
+            <div>
+                <label asp-for="PasswordConfirmation"> Confirm password</label>
+                <input asp-for="PasswordConfirmation" />
+            </div>
+            <div>
+                <label asp-for="PhoneNumber"> Phone Number</label>
+                <input asp-for="PhoneNumber" />
+            </div>
+            <div>
+                <label asp-for="Age"> Age</label>
+                <input asp-for="Age" />
+            </div>
+            <div>
+                <select asp-for="City"
+                        asp-items="Html.GetEnumSelectList<Data.Cities>()">
+                </select>
+            </div>
+            <div>
+                <input type="submit" />
+                <input type="reset" value="clear" />
+            </div>
+            <div asp-validation-summary="All"></div>
+        </form>
+
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
